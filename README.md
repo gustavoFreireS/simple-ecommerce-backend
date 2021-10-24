@@ -7,6 +7,8 @@
 - on the .env file change the `DATABASE_URL` configuration
 - `yarn generate`
 - `yarn dev`
+- open http://localhost:5000
+
 
 
 ## Using docker
