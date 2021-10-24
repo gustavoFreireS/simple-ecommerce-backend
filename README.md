@@ -9,12 +9,19 @@
 - `yarn dev`
 - open http://localhost:5000
 
+## after change the schema.prisma
 
+- `yarn prisma generate`
 
-## Using docker
+## using docker
 
 - `docker-compose up -d`
 
-## Using pgweb
+## using pgweb
 
 - http://localhost:8888
+
+## using prisma studio instead
+
+- `yarn prisma studio`
+
