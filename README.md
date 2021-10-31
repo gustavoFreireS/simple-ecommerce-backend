@@ -25,3 +25,6 @@
 
 - `yarn prisma studio`
 
+## create seed
+
+- `yarn prisma db seed`

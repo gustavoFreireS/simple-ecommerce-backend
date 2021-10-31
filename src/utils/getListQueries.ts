@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import validator from 'validator';
+import camelCase from 'lodash/camelCase';
 
 import { Pagination } from '../services/types';
 import { ValidatorError } from '../utils/errors';
@@ -33,7 +34,7 @@ export const getListQueries = <T extends string>(query: Query, allowedOrderBy: s
       if (allowedOrderBy.includes(query.sorting.split('.')[0])) {
         if (['asc', 'desc'].includes(query.sorting.split('.')[1].toLowerCase())) {
           const [field, order] = query.sorting.split('.') as [T, Prisma.SortOrder];
-          sorting[field as T] = order.toLowerCase() as Prisma.SortOrder;
+          sorting[camelCase(field) as T] = order.toLowerCase() as Prisma.SortOrder;
         } else {
           throw new ValidatorError(`Sorting is not valid. Use asc or desc as direction`);
         }
@@ -46,7 +47,7 @@ export const getListQueries = <T extends string>(query: Query, allowedOrderBy: s
       throw new ValidatorError(`Sorting is not valid. Ex: ${allowedOrderBy[0]}.asc`);
     }
   }
-  console.log(pagination);
+
   return {
     pagination,
     sorting,
