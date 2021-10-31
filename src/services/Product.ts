@@ -27,3 +27,12 @@ export const getProducts = async ({
 export const countProducts = async () => {
   return await db.product.count();
 };
+
+export const getProduct = async (id: string) => {
+  return await db.product.findUnique({
+    rejectOnNotFound: true,
+    where: {
+      id,
+    },
+  });
+};
